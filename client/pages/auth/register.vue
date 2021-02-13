@@ -376,16 +376,16 @@ export default {
 
                 })
 
-                try {
-                    await this.$auth.loginWith('local', {
-                        data: {
-                            email: this.form.email,
-                            password: this.form.password
-                        }
-                    }).then(res => console.log(res))
-                } catch (e) {
-                    console.log(e);
-                }
+                // try {
+                //     await this.$auth.loginWith('local', {
+                //         data: {
+                //             email: this.form.email,
+                //             password: this.form.password
+                //         }
+                //     }).then(res => console.log(res))
+                // } catch (e) {
+                //     console.log(e);
+                // }
 
             } catch (e) {
                 console.log(e);

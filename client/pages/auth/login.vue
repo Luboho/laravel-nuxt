@@ -53,7 +53,8 @@
         form: {
           email: '',
           password: '',
-        }
+        },
+        validUser: false
       }
     },
     methods: {
@@ -64,15 +65,42 @@
       },
 
       async handleSubmit(e) {
-          e.preventDefault();
+        e.preventDefault();
 
-        try {
-          await this.$axios.$get('sanctum/csrf-cookie');
-          await this.$auth.loginWith('local', {data: this.form})
-            
-        } catch (e) {
-          this.errors = e.response.data.errors;
-        }
+        // try {
+        //   await this.$axios.$get('sanctum/csrf-cookie')
+        //   await this.$axios.post('/api/verified', {email: this.form.email, password: this.form.password})
+        //       .then(res => this.validUser = res.data.validUser)
+        //         if(this.validUser) {
+        //           try{
+        //             await this.$axios.$get('sanctum/csrf-cookie')
+        //             await this.$auth.loginWith('local', {data: this.form})
+        //           } catch(e) {
+        //                 this.errors = e.response.data.errors;
+        //           }
+        //         } else if(this.validUser === false) {
+        //             this.errors = { email: { 0: 'Please verify your email first.'}};
+        //         } 
+        //   } catch(e) {
+        //       this.errors = e.response.data.errors;
+
+        //     // if(e.response.data.errors){
+        //       // this.errors = e.response;
+        //     // }
+        // }
+
+          try {
+
+            await this.$axios.$get('sanctum/csrf-cookie');
+            await this.$auth.loginWith('local', {data: this.form})
+              
+          } catch (e) {
+            if(e.response.data.errors){
+              this.errors = e.response.data.errors;
+            } else if(e.response.request.status == 401) {
+              this.errors = { email: { 0: 'Credentials does not match to any user.'}}
+            }
+          }
       }
     }
   }

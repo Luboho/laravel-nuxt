@@ -60,6 +60,11 @@ export default {
           tokenRequired: false,
           tokenType: false,
         } 
+      },
+      redirect: {
+        login: "/auth/login",
+        logout: "/",
+        home: "/"
       }
     },
 
