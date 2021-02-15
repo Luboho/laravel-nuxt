@@ -17,6 +17,3 @@ use App\Http\Controllers\Auth\VerificationController;
 
 Auth::routes();
 
-Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-Route::get('/verified', [VerificationController::class, 'verified']);
-

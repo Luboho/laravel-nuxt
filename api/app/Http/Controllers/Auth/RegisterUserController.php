@@ -13,7 +13,8 @@ use Illuminate\Support\Facades\Mail;
 class RegisterUserController extends Controller
 {
 
-    public function store(Request $request) {
+    public function store(Request $request) 
+    {
         $request->validate([
             'name' => ['required', 'string', 'max:255'],
             'country' => ['required', 'string', 'max:255'],

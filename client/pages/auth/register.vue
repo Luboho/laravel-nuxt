@@ -373,9 +373,9 @@ export default {
                     password: this.form.password,
                     password_confirmation: this.form.password_confirmation,
                     country: this.form.country
-
+                }).then(function() {
+                    alert('You received a confirmation email. Please verify your email.')
                 })
-
                 // try {
                 //     await this.$auth.loginWith('local', {
                 //         data: {
@@ -386,7 +386,7 @@ export default {
                 // } catch (e) {
                 //     console.log(e);
                 // }
-
+                this.$router.replace({name: 'index'})
             } catch (e) {
                 console.log(e);
             }
