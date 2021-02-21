@@ -37,12 +37,13 @@ Route::post('/logout', LogoutController::class);
 // Lesson
 Route::get('/lesson/{slug}', [LessonController::class, 'index'] );
 
-// Course
+// Course // 'admin' middleware is creted on backend 
 Route::middleware(['auth:sanctum', 'admin'])->group(function() {
     Route::post('/admin/courses/new', [CourseController::class, 'store']);
 });
 
-Route::get('/admin/courses/{slug}', [CourseController::class, 'index'] );
+Route::get('/courses/{slug}', [CourseController::class, 'index'] );
+Route::get('/', [CourseController::class, 'all']);
 
 
 // Route::get('/courses/{id}/lesson', function($id) {

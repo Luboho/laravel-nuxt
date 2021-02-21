@@ -11,16 +11,25 @@ class CourseController extends Controller
 {
     public function index($slug) 
     {
-        $course = Course::where('slug', '=', $slug);
+        $course = Course::where('slug', '=', $slug)->first();
 
         if ($course) {
             return new CourseResource($course->first());
+        } else {
+            return response()->json(['data' => [
+                'errors' => [
+                    'root' => 'This course does not exist.'
+                ],
+                'redirect' => true
+            ]]);
         }
     }
 
     public function all()
     {
-
+        return response()->json(['data' => [
+            'courses' => Course::all()
+        ]]);
     }
 
     // Authenticated only

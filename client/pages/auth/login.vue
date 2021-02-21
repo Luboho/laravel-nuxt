@@ -3,7 +3,7 @@
     <a-layout-content style="min-height: calc(100vh - 90px);">
       <a-row style="min-height: 80vh;" type="flex" align="middle" justify="center">
         <a-col xl="14" lg="14" sm="24" xs="24" md="16">
-          <a-card title="Register">
+          <a-card title="Login">
             <a-form
               id="components-form-demo-normal-login"
               class="login-form"

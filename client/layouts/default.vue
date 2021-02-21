@@ -16,8 +16,8 @@
             <a-menu-item key="viewProfile">
               View Profile
             </a-menu-item>
-            <a-menu-item key="" v-if="this.$auth.user.is_admin">
-              <n-link to="/admin/courses/new">New Course</n-link>
+            <a-menu-item key="" v-if="this.$auth.user.is_admin == 'true'">
+              <n-link to="/courses/new">New Course</n-link>
             </a-menu-item>
             <a-menu-item key="account">
               Account Settings
